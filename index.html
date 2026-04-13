@@ -1,10 +1,536 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Atlas de la mondialisation</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La mondialisation et ses espaces — Planisphère interactif</title>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZzEiIGN4PSIzNiUiIGN5PSIzMiUiIHI9IjY1JSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI0NSUiIHN0b3AtY29sb3I9IiNkZGUzZWEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOWFhM2FkIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJzaGFkb3ciIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iNzAlIiBzdG9wLWNvbG9yPSJ0cmFuc3BhcmVudCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAyMiIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSI3NSUiIHN0b3AtY29sb3I9IiNkNGE4MzYwMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkNGE4MzY0MCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZExpbmUiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E4ODIyYSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iI2U4Yzk2YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2Y1ZTA5YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iI2U4Yzk2YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhODgyMmEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRBcmMiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZTA5YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2M5YTg0YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4YTY4MjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAiPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzYiLz48L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjgyIiBmaWxsPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI3NiIgZmlsbD0idXJsKCNnMSkiLz4KICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcCkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdhODY5NCIgc3Ryb2tlLXdpZHRoPSIwLjYiIG9wYWNpdHk9IjAuMjUiPgogICAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9IjI4IiByeT0iNzYiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMDAiIHJ4PSI1NSIgcnk9Ijc2Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iNzAiICByeD0iNzAiIHJ5PSIxNiIvPgogICAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEzMCIgcng9IjcwIiByeT0iMTYiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSI0MyIgIHJ4PSI1MCIgcnk9IjkiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNTciIHJ4PSI1MCIgcnk9IjkiLz4KICA8L2c+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTAwIiB4Mj0iMTc2IiB5Mj0iMTAwIiBjbGlwLXBhdGg9InVybCgjY2xpcCkiIHN0cm9rZT0idXJsKCNnb2xkTGluZSkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC45NSIvPgogIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMDAiIHJ4PSIyOCIgcnk9Ijc2IiBjbGlwLXBhdGg9InVybCgjY2xpcCkiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnb2xkQXJjKSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG9wYWNpdHk9IjAuODUiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9Ijc2IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZEFyYykiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI3NiIgZmlsbD0idXJsKCNzaGFkb3cpIi8+CiAgPGVsbGlwc2UgY3g9IjcyIiBjeT0iNzEiIHJ4PSIyMCIgcnk9IjEyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC40NSIgdHJhbnNmb3JtPSJyb3RhdGUoLTM1LDcyLDcxKSIvPgogIDxlbGxpcHNlIGN4PSI4MiIgY3k9IjYzIiByeD0iNiIgcnk9IjMuNSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuNiIgdHJhbnNmb3JtPSJyb3RhdGUoLTM1LDgyLDYzKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjI0IiByPSI1LjUiIGZpbGw9IiNjOWE4NGMiIHN0cm9rZT0iI2Y1ZTA5YSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTc2IiByPSI1LjUiIGZpbGw9IiNjOWE4NGMiIHN0cm9rZT0iI2Y1ZTA5YSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --slate: #1e2a35;
+  --gold: #c9a84c;
+  --cream: #f5f0e8;
+  --text: #1e2a35;
+  --text-muted: #6b7a87;
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── HEADER ── */
+.atlas-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(30,42,53,0.15);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.atlas-eyebrow {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.atlas-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--slate);
+  line-height: 1.15;
+}
+.atlas-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: #4a5a68;
+}
+
+/* ── CONTROLS ── */
+.controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ctrl-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+.toggle-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border: 1px solid rgba(30,42,53,0.25);
+  border-radius: 20px;
+  background: transparent;
+  color: #4a5a68;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+.toggle-pill .pill-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.toggle-pill.active {
+  border-color: var(--slate);
+  color: var(--slate);
+  background: rgba(30,42,53,0.06);
+}
+.toggle-pill:not(.active) { opacity: 0.5; }
+
+/* ── MAP ── */
+#map-container {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(30,42,53,0.2);
+  box-shadow: 0 2px 16px rgba(30,42,53,0.08);
+}
+svg#map { display: block; width: 100%; height: auto; }
+
+.country { stroke: #fff; stroke-width: 0.3; transition: opacity 0.15s; }
+.country:hover { opacity: 0.78; }
+.graticule { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 0.3; }
+.sphere { fill: #2a6496; }
+.border { fill: none; stroke: #fff; stroke-width: 0.5; }
+.city-dot { cursor: pointer; }
+.city-dot circle { transition: r 0.15s; }
+.city-dot:hover circle { r: 7; }
+
+/* ── TOOLTIP ── */
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid rgba(30,42,53,0.15);
+  border-radius: 4px;
+  padding: 9px 13px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 12px;
+  max-width: 215px;
+  z-index: 20;
+  display: none;
+  line-height: 1.55;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.tooltip strong {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 1px;
+  color: var(--slate);
+}
+.tooltip .tip-country {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+.tooltip span { color: var(--text-muted); font-size: 11.5px; }
+
+/* ── FOOTER ── */
+.atlas-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  flex: 1;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+.legend-swatch-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.9);
+  flex-shrink: 0;
+}
+.legend-swatch-bar {
+  width: 18px; height: 8px;
+  border-radius: 2px;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+.atlas-note {
+  font-size: 10px;
+  color: #9a9a9a;
+  letter-spacing: 0.02em;
+  text-align: right;
+  white-space: nowrap;
+  padding-top: 2px;
+  font-style: italic;
+}
+
+/* ── INFO BOXES ── */
+.info-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(30,42,53,0.1);
+}
+.info-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(30,42,53,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.info-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--slate);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+}
+.info-list {
+  list-style: none;
+}
+.info-item {
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.info-item strong {
+  color: var(--slate);
+  display: block;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+
+.info-item ul {
+  margin-top: 8px;
+  margin-left: 20px; /* Retrait pour éviter que les puces ne touchent le bord */
+  padding-left: 0;
+}
+.info-item li {
+  margin-bottom: 6px;
+  list-style-type: disc;
+}
+
+</style>
 </head>
 <body>
-    <h1>Bienvenue sur l'atlas de la mondialisation</h1>
-    <p>Ce site est une merde, mais il existe.</p>
+<div id="wrapper">
+
+  <div class="atlas-header">
+    <div class="atlas-title-block">
+      <div class="atlas-eyebrow">Géographie — Terminale</div>
+      <div class="atlas-title">La mondialisation <em>et ses espaces</em></div>
+    </div>
+    <div class="controls">
+      <span class="ctrl-label">Calques</span>
+      <button class="toggle-pill active" id="btn-metropoles" onclick="toggleLayer('metropoles')">
+        <span class="pill-dot" style="background:#e74c3c"></span>
+        Métropoles
+      </button>
+      <button class="toggle-pill active" id="btn-orgs" onclick="toggleLayer('orgs')">
+        <span class="pill-dot" style="background:#c9a84c"></span>
+        Organisations
+      </button>
+    </div>
+  </div>
+
+  <div id="map-container">
+    <svg id="map" viewBox="0 0 960 500"></svg>
+    <div class="tooltip" id="tooltip"></div>
+  </div>
+
+  <div class="atlas-footer">
+    <div class="legend">
+      <div class="legend-item">
+        <span class="legend-swatch-dot" style="background:#e74c3c"></span>
+        Métropole mondiale (top 10)
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch-bar" style="background:#3B8BD4"></span>
+        Union européenne
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch-bar" style="background:#7F77DD"></span>
+        ACEUM
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch-bar" style="background:#1D9E75"></span>
+        ASEAN
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch-bar" style="background:#D85A30"></span>
+        MERCOSUR
+      </div>
+      <div class="legend-item">
+        <span class="legend-swatch-bar" style="background:#BA7517"></span>
+        Union africaine
+      </div>
+    </div>
+    <div class="atlas-note">Survole les pays et les villes · Clique sur une métropole pour approfondir</div>
+  </div>
+
+<div class="info-section">
+  <div class="info-card">
+    <h3>Grands ensembles régionaux</h3>
+    <div class="info-list">
+      <div class="info-item"><strong>Union européenne</strong>Espace d'intégration régionale le plus abouti au monde (27 membres). Union économique et monétaire (Zone Euro) et espace de libre circulation (Schengen).</div>
+      <div class="info-item"><strong>ACEUM</strong>Accord Canada-États-Unis-Mexique (ex-ALENA). Zone de libre-échange majeure, centrée sur la puissance états-unienne.</div>
+      <div class="info-item"><strong>ASEAN</strong>Association des nations de l'Asie du Sud-Est. Pôle de croissance mondial majeur, visant la stabilité politique et l'intégration économique.</div>
+      <div class="info-item"><strong>MERCOSUR</strong>Marché commun du Sud. Organisation d'intégration économique en Amérique latine (Argentine, Brésil, Paraguay, Uruguay, Bolivie, Venezuela - actuellement suspendu).</div>
+      <div class="info-item"><strong>Union africaine</strong>Organisation continentale visant à promouvoir l'unité, la paix et le développement économique à l'échelle de l'Afrique.</div>
+    </div>
+  </div>
+    <div class="info-card">
+    <h3>Notions clés</h3>
+    <div class="info-list">
+      <div class="info-item">
+        <strong>Mondialisation</strong>
+        Un processus d'extension progressive du système capitaliste dans l'espace géographique mondial (...)
+        <ul>
+          <li>Une intensification des échanges et des flux de tous les ordres</li>
+          <li>Interdépendance croissante entre les différents États du monde</li>
+          <li>Liens de "coopétition" (Guy Thuillier, Introduction à la géopolitique)</li>
+        </ul>
+      </div>
+      <div class="info-item">
+        <strong>Centre</strong>
+        Un centre est un pôle qui joue un rôle d’impulsion et de direction. Un centre spatial n'est pas forcément central géométriquement.
+      </div>
+      <div class="info-item">
+        <strong>Périphérie</strong>
+        Les périphéries sont les espaces sous la domination d’un centre. Les espaces périphériques peuvent être centraux géométriquement (ex : Massif Central en France).
+      </div>
+      <div class="info-item">
+        <strong>Périphéries intégrées / délaissées</strong>
+        Les périphéries intégrées profitent de la dynamique des centres (ex: pays émergents), tandis que les périphéries délaissées restent en marge des flux mondiaux.
+      </div>
+      <div class="info-item">
+        <strong>Territoire</strong>
+        Espace approprié par une société, délimité par des frontières et organisé par des acteurs politiques, économiques et sociaux.
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const cities = [
+  { name:"Londres",   country:"Royaume-Uni",  lon:-0.12,  lat:51.5,   desc:"Hub financier mondial, City, bourse. Nœud culturel et diplomatique majeur." },
+  { name:"New York",  country:"États-Unis",   lon:-74.0,  lat:40.7,   desc:"1re place financière (Wall St), siège ONU, capitale culturelle mondiale." },
+  { name:"Hong Kong", country:"Chine (RAS)",  lon:114.17, lat:22.32,  desc:"Porte d'entrée financière sur la Chine, bourse et commerce international." },
+  { name:"Pékin",     country:"Chine",        lon:116.4,  lat:39.9,   desc:"Capitale politique et culturelle de la 2e puissance mondiale." },
+  { name:"Shanghai",  country:"Chine",        lon:121.47, lat:31.23,  desc:"1er port mondial. Principal moteur économique de la Chine." },
+  { name:"Singapour", country:"Cité-État",    lon:103.82, lat:1.35,   desc:"Plateforme logistique et financière de l'Asie du Sud-Est." },
+  { name:"Paris",     country:"France",       lon:2.35,   lat:48.85,  desc:"Culture, mode, tourisme, institutions (UE, UNESCO). Métropole globale." },
+  { name:"Dubaï",     country:"Émirats A.U.", lon:55.27,  lat:25.2,   desc:"Carrefour aérien et commercial entre Orient et Occident." },
+  { name:"Tokyo",     country:"Japon",        lon:139.69, lat:35.68,  desc:"Aire urbaine la plus peuplée au monde. Finance et technologie." },
+  { name:"Sydney",    country:"Australie",    lon:151.2,  lat:-33.87, desc:"Métropole du Pacifique Sud. Finance, services, tourisme." },
+];
+
+const orgCountries = {
+  eu: ['AUT', 'BEL', 'BGR', 'HRV', 'CYP', 'CZE', 'DNK', 'EST', 'FIN', 'FRA', 'DEU', 'GRC', 'HUN', 'IRL', 'ITA', 'LVA', 'LTU', 'LUX', 'MLT', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE'],
+  aceum: ['USA', 'CAN', 'MEX'],
+  asean: ['BRN', 'KHM', 'IDN', 'LAO', 'MYS', 'MMR', 'PHL', 'SGP', 'THA', 'VNM', 'TLS'],
+  mercosur: ['ARG', 'BRA', 'PRY', 'URY', 'BOL', 'VEN'],
+  ua: ['DZA', 'AGO', 'BEN', 'BWA', 'BFA', 'BDI', 'CPV', 'CMR', 'CAF', 'TCD', 'COM', 'COG', 'COD', 'CIV', 'DJI', 'EGY', 'GNQ', 'ERI', 'SWZ', 'ETH', 'GAB', 'GMB', 'GHA', 'GIN', 'GNB', 'KEN', 'LSO', 'LBR', 'LBY', 'MDG', 'MWI', 'MLI', 'MRT', 'MUS', 'MAR', 'MOZ', 'NAM', 'NER', 'NGA', 'RWA', 'STP', 'SEN', 'SYC', 'SLE', 'SOM', 'ZAF', 'SSD', 'SDN', 'TZA', 'TGO', 'TUN', 'UGA', 'ESH', 'ZMB', 'ZWE'],
+};
+const orgColors = { eu:"#3B8BD4", aceum:"#7F77DD", asean:"#1D9E75", mercosur:"#D85A30", ua:"#BA7517" };
+const orgNames  = { eu:"Union européenne", aceum:"ACEUM", asean:"ASEAN", mercosur:"MERCOSUR", ua:"Union africaine" };
+
+const numToA3 = {
+  "004":"AFG",  "008":"ALB",  "010":"ATA",  "012":"DZA",  "016":"ASM",  "020":"AND",  "024":"AGO",  "028":"ATG",
+  "031":"AZE",  "032":"ARG",  "036":"AUS",  "040":"AUT",  "044":"BHS",  "048":"BHR",  "050":"BGD",  "051":"ARM",  "052":"BRB",  "056":"BEL",
+  "060":"BMU",  "064":"BTN",  "068":"BOL",  "070":"BIH",
+  "072":"BWA",  "074":"BVT",  "076":"BRA",  "084":"BLZ",
+  "086":"IOT",  "090":"SLB",  "092":"VGB",  "096":"BRN",  "100":"BGR",  "104":"MMR",  "108":"BDI",  "112":"BLR",
+  "116":"KHM",  "120":"CMR",  "124":"CAN",  "132":"CPV",  "136":"CYM",  "140":"CAF",
+  "144":"LKA",  "148":"TCD",  "152":"CHL",  "156":"CHN",  "158":"TWN",  "162":"CXR",  "166":"CCK",  "170":"COL",  "174":"COM",  "175":"MYT",
+  "178":"COG",  "180":"COD",  "184":"COK",  "188":"CRI",  "191":"HRV",  "192":"CUB",  "196":"CYP",
+  "203":"CZE",
+  "204":"BEN",  "208":"DNK",  "212":"DMA",  "214":"DOM",  "218":"ECU",  "222":"SLV",  "226":"GNQ",  "231":"ETH",
+  "232":"ERI",  "233":"EST",  "234":"FRO",  "238":"FLK",
+  "239":"SGS",  "242":"FJI",  "246":"FIN",  "248":"ALA",  "250":"FRA",  "254":"GUF",  "258":"PYF",  "260":"ATF",  "262":"DJI",  "266":"GAB",
+  "268":"GEO",  "270":"GMB",  "276":"DEU",  "288":"GHA",  "292":"GIB",  "300":"GRC",  "304":"GRL",  "308":"GRD",
+  "312":"GLP",  "316":"GUM",  "320":"GTM",  "324":"GIN",  "328":"GUY",  "332":"HTI",  "334":"HMD",  "336":"VAT",
+  "340":"HND",  "344":"HKG",  "348":"HUN",  "352":"ISL",  "356":"IND",  "360":"IDN",  "364":"IRN",
+  "368":"IRQ",  "372":"IRL",  "376":"ISR",  "380":"ITA",  "384":"CIV",  "388":"JAM",  "392":"JPN",
+  "398":"KAZ",  "400":"JOR",  "404":"KEN",  "408":"PRK",  "410":"KOR",  "414":"KWT",  "417":"KGZ",  "418":"LAO",  "422":"LBN",  "426":"LSO",  "428":"LVA",  "430":"LBR",  "434":"LBY",
+  "438":"LIE",  "440":"LTU",  "442":"LUX",  "446":"MAC",  "450":"MDG",  "454":"MWI",  "458":"MYS",  "462":"MDV",
+  "466":"MLI",  "470":"MLT",  "474":"MTQ",  "478":"MRT",  "480":"MUS",  "484":"MEX",  "492":"MCO",  "496":"MNG",  "498":"MDA",  "499":"MNE",  "500":"MSR",  "504":"MAR",
+  "508":"MOZ",  "512":"OMN",  "516":"NAM",  "520":"NRU",  "524":"NPL",  "528":"NLD",  "531":"CUW",  "533":"ABW",  "534":"SXM",  "535":"BES",  "540":"NCL",  "548":"VUT",  "554":"NZL",  "558":"NIC",  "562":"NER",  "566":"NGA",  "570":"NIU",  "574":"NFK",
+  "578":"NOR",  "580":"MNP",  "581":"UMI",
+  "583":"FSM",  "584":"MHL",  "585":"PLW",  "586":"PAK",  "591":"PAN",  "598":"PNG",  "600":"PRY",  "604":"PER",  "608":"PHL",  "612":"PCN",  "616":"POL",
+  "620":"PRT",  "624":"GNB",  "626":"TLS",  "630":"PRI",
+  "634":"QAT",  "638":"REU",  "642":"ROU",  "643":"RUS",  "646":"RWA",  "652":"BLM",  "654":"SHN",  "659":"KNA",  "660":"AIA",  "662":"LCA",  "663":"MAF",  "666":"SPM",  "670":"VCT",  "674":"SMR",  "678":"STP",  "682":"SAU",  "686":"SEN",
+  "688":"SRB",  "690":"SYC",  "694":"SLE",  "702":"SGP",  "703":"SVK",  "704":"VNM",  "705":"SVN",  "706":"SOM",  "710":"ZAF",  "716":"ZWE",  "724":"ESP",  "728":"SSD",
+  "729":"SDN",  "732":"ESH",  "740":"SUR",  "744":"SJM",  "748":"SWZ",  "752":"SWE",  "756":"CHE",
+  "760":"SYR",  "762":"TJK",  "764":"THA",  "768":"TGO",  "772":"TKL",  "776":"TON",  "780":"TTO",  "784":"ARE",
+  "788":"TUN",  "792":"TUR",  "795":"TKM",  "796":"TCA",  "798":"TUV",
+  "800":"UGA",  "804":"UKR",  "807":"MKD",  "818":"EGY",  "826":"GBR",
+  "834":"TZA",  "840":"USA",
+  "850":"VIR",  "854":"BFA",
+  "858":"URY",  "860":"UZB",  "862":"VEN",  "876":"WLF",  "882":"WSM",
+  "887":"YEM",  "894":"ZMB",
+};
+
+const a3ToName = {'AFG': 'Afghanistan', 'ALB': 'Albanie', 'DZA': 'Algérie', 'ASM': 'Samoa américaines', 'AND': 'Andorre', 'AGO': 'Angola', 'ATG': 'Antigua-et-Barbuda', 'AZE': 'Azerbaïdjan', 'ARG': 'Argentine', 'AUS': 'Australie', 'AUT': 'Autriche', 'BHS': 'Bahamas', 'BHR': 'Bahreïn', 'BGD': 'Bangladesh', 'ARM': 'Arménie', 'BRB': 'Barbade', 'BEL': 'Belgique', 'BMU': 'Bermudes', 'BTN': 'Bhoutan', 'BOL': 'Bolivie', 'BIH': 'Bosnie-Herzégovine', 'BWA': 'Botswana', 'BVT': 'Île Bouvet', 'BRA': 'Brésil', 'BLZ': 'Belize', 'IOT': "Territoire britannique de l'océan Indien", 'SLB': 'Îles Salomon', 'VGB': 'Îles Vierges britanniques', 'BRN': 'Brunéi Darussalam', 'BGR': 'Bulgarie', 'MMR': 'Myanmar', 'BDI': 'Burundi', 'BLR': 'Bélarus', 'KHM': 'Cambodge', 'CMR': 'Cameroun', 'CAN': 'Canada', 'CPV': 'Cabo Verde', 'CYM': 'Îles Caïmans', 'CAF': 'République centrafricaine', 'LKA': 'Sri Lanka', 'TCD': 'Tchad', 'CHL': 'Chili', 'CHN': 'Chine', 'TWN': 'Taïwan', 'CXR': 'Île Christmas', 'CCK': 'Îles Cocos', 'COL': 'Colombie', 'COM': 'Comores', 'MYT': 'Mayotte', 'COG': 'Congo', 'COD': 'Congo (RDC)', 'COK': 'Îles Cook', 'CRI': 'Costa Rica', 'HRV': 'Croatie', 'CUB': 'Cuba', 'CYP': 'Chypre', 'CZE': 'Tchéquie', 'BEN': 'Bénin', 'DNK': 'Danemark', 'DMA': 'Dominique', 'DOM': 'République dominicaine', 'ECU': 'Équateur', 'SLV': 'El Salvador', 'GNQ': 'Guinée équatoriale', 'ETH': 'Éthiopie', 'ERI': 'Érythrée', 'EST': 'Estonie', 'FRO': 'Îles Féroé', 'FLK': 'Îles Falkland', 'SGS': 'Géorgie du Sud-et-les Îles Sandwich du Sud', 'FJI': 'Fidji', 'FIN': 'Finlande', 'ALA': "Îles d'Åland", 'FRA': 'France', 'GUF': 'Guyane française', 'PYF': 'Polynésie française', 'ATF': 'Terres australes françaises', 'DJI': 'Djibouti', 'GAB': 'Gabon', 'GEO': 'Géorgie', 'GMB': 'Gambie', 'DEU': 'Allemagne', 'GHA': 'Ghana', 'GIB': 'Gibraltar', 'GRC': 'Grèce', 'GRL': 'Groenland', 'GRD': 'Grenade', 'GLP': 'Guadeloupe', 'GUM': 'Guam', 'GTM': 'Guatemala', 'GIN': 'Guinée', 'GNB': 'Guinée-Bissau', 'HTI': 'Haïti', 'HMD': 'Îles Heard-et-MacDonald', 'VAT': 'Saint-Siège', 'HND': 'Honduras', 'HKG': 'Hong Kong', 'HUN': 'Hongrie', 'ISL': 'Islande', 'IND': 'Inde', 'IDN': 'Indonésie', 'IRN': 'Iran', 'IRQ': 'Iraq', 'IRL': 'Irlande', 'ISR': 'Israël', 'ITA': 'Italie', 'CIV': "Côte d'Ivoire", 'JAM': 'Jamaïque', 'JPN': 'Japon', 'KAZ': 'Kazakhstan', 'JOR': 'Jordanie', 'KEN': 'Kenya', 'PRK': 'Corée du Nord', 'KOR': 'Corée du Sud', 'KWT': 'Koweït', 'KGZ': 'Kirghizistan', 'LAO': 'Laos', 'LBN': 'Liban', 'LSO': 'Lesotho', 'LVA': 'Lettonie', 'LBR': 'Libéria', 'LBY': 'Libye', 'LIE': 'Liechtenstein', 'LTU': 'Lituanie', 'LUX': 'Luxembourg', 'MAC': 'Macao', 'MDG': 'Madagascar', 'MWI': 'Malawi', 'MYS': 'Malaisie', 'MDV': 'Maldives', 'MLI': 'Mali', 'MLT': 'Malte', 'MTQ': 'Martinique', 'MRT': 'Mauritanie', 'MUS': 'Maurice', 'MEX': 'Mexique', 'MCO': 'Monaco', 'MNG': 'Mongolie', 'MDA': 'Moldova', 'MNE': 'Monténégro', 'MSR': 'Montserrat', 'MAR': 'Maroc', 'MOZ': 'Mozambique', 'OMN': 'Oman', 'NAM': 'Namibie', 'NRU': 'Nauru', 'NPL': 'Népal', 'NLD': 'Pays-Bas', 'CUW': 'Curaçao', 'ABW': 'Aruba', 'SXM': 'Saint-Martin (partie néerlandaise)', 'BES': 'Bonaire, Saint-Eustache et Saba', 'NCL': 'Nouvelle-Calédonie', 'VUT': 'Vanuatu', 'NZL': 'Nouvelle-Zélande', 'NIC': 'Nicaragua', 'NER': 'Niger', 'NGA': 'Nigéria', 'NIU': 'Niue', 'NFK': 'Île Norfolk', 'NOR': 'Norvège', 'MNP': 'Îles Mariannes du Nord', 'UMI': 'Îles mineures éloignées des États-Unis', 'FSM': 'Micronésie', 'MHL': 'Îles Marshall', 'PLW': 'Palaos', 'PAK': 'Pakistan', 'PAN': 'Panama', 'PNG': 'Papouasie-Nouvelle-Guinée', 'PRY': 'Paraguay', 'PER': 'Pérou', 'PHL': 'Philippines', 'PCN': 'Pitcairn', 'POL': 'Pologne', 'PRI': 'Porto Rico', 'PRT': 'Portugal', 'TLS': 'Timor-Leste', 'QAT': 'Qatar', 'REU': 'Réunion', 'ROU': 'Roumanie', 'RUS': 'Russie', 'RWA': 'Rwanda', 'BLM': 'Saint-Barthélemy', 'SHN': 'Sainte-Hélène', 'KNA': 'Saint-Kitts-et-Nevis', 'AIA': 'Anguilla', 'LCA': 'Sainte-Lucie', 'MAF': 'Saint-Martin (partie française)', 'SPM': 'Saint-Pierre-et-Miquelon', 'VCT': 'Saint-Vincent-et-les Grenadines', 'SMR': 'Saint-Marin', 'STP': 'Sao Tomé-et-Principe', 'SAU': 'Arabie saoudite', 'SEN': 'Sénégal', 'SRB': 'Serbie', 'SYC': 'Seychelles', 'SLE': 'Sierra Leone', 'SGP': 'Singapour', 'SVK': 'Slovaquie', 'VNM': 'Viet Nam', 'SVN': 'Slovénie', 'SOM': 'Somalie', 'ZAF': 'Afrique du Sud', 'ZWE': 'Zimbabwe', 'ESP': 'Espagne', 'SSD': 'Soudan du Sud', 'SDN': 'Soudan', 'ESH': 'Sahara occidental', 'SUR': 'Suriname', 'SJM': 'Svalbard et Jan Mayen', 'SWZ': 'Eswatini', 'SWE': 'Suède', 'CHE': 'Suisse', 'SYR': 'Syrie', 'TJK': 'Tadjikistan', 'THA': 'Thaïlande', 'TGO': 'Togo', 'TKL': 'Tokelau', 'TON': 'Tonga', 'TTO': 'Trinité-et-Tobago', 'ARE': 'Émirats arabes unis', 'TUN': 'Tunisie', 'TUR': 'Turquie', 'TKM': 'Turkménistan', 'TCA': 'Îles Turques-et-Caïques', 'TUV': 'Tuvalu', 'UGA': 'Ouganda', 'UKR': 'Ukraine', 'MKD': 'Macédoine du Nord', 'EGY': 'Égypte', 'GBR': 'Royaume-Uni', 'TZA': 'Tanzanie', 'USA': 'États-Unis', 'VIR': 'Îles Vierges des États-Unis', 'BFA': 'Burkina Faso', 'URY': 'Uruguay', 'UZB': 'Ouzbékistan', 'VEN': 'Venezuela', 'WLF': 'Wallis-et-Futuna', 'WSM': 'Samoa', 'YEM': 'Yémen', 'ZMB': 'Zambie', 'ATA': 'Antarctique'};
+const countryOrg = {};
+for (const [org, codes] of Object.entries(orgCountries))
+  for (const code of codes) countryOrg[code] = org;
+
+const layers = { metropoles: true, orgs: true };
+const svg = d3.select("#map");
+const projection = d3.geoNaturalEarth1().scale(153).translate([480, 250]);
+const path = d3.geoPath().projection(projection);
+const tooltip = document.getElementById("tooltip");
+const mapEl   = document.getElementById("map-container");
+
+svg.append("path").datum({type:"Sphere"}).attr("class","sphere").attr("d",path);
+svg.append("path").datum(d3.geoGraticule()()).attr("class","graticule").attr("d",path);
+
+function showTip(event, name, country, desc) {
+  tooltip.innerHTML = `<strong>${name}</strong><span class="tip-country">${country}</span><span>${desc}</span>`;
+  tooltip.style.display = "block";
+  const rect = mapEl.getBoundingClientRect();
+  let x = event.clientX - rect.left + 14;
+  let y = event.clientY - rect.top + 12;
+  if (x + 225 > mapEl.offsetWidth) x = mapEl.offsetWidth - 230;
+  if (y + 110 > mapEl.offsetHeight) y -= 100;
+  tooltip.style.left = x + "px";
+  tooltip.style.top  = y + "px";
+}
+function hideTip() { tooltip.style.display = "none"; }
+
+fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+  .then(r => r.json())
+  .then(world => {
+    const countries = topojson.feature(world, world.objects.countries);
+    const borders   = topojson.mesh(world, world.objects.countries, (a,b) => a !== b);
+    const gCountries = svg.append("g").attr("class","countries-layer");
+
+    gCountries.selectAll(".country")
+      .data(countries.features).enter()
+      .append("path").attr("class","country").attr("d",path)
+      .attr("fill", d => {
+        const a3  = numToA3[String(d.id).padStart(3,"0")];
+        const org = countryOrg[a3];
+        return (org && layers.orgs) ? orgColors[org] : "#a8bfa0";
+      })
+      .attr("opacity", d => {
+        const a3 = numToA3[String(d.id).padStart(3,"0")];
+        return (countryOrg[a3] && layers.orgs) ? 0.75 : 0.85;
+      })
+      .on("mousemove", function(event, d) {
+        const a3  = numToA3[String(d.id).padStart(3,"0")];
+        const org = countryOrg[a3];
+        const sub = org ? `Membre · ${orgNames[org]}` : "Non membre d'une organisation listée";
+        showTip(event, a3ToName[a3] || a3 || "Pays", "", sub);
+      })
+      .on("mouseleave", hideTip);
+
+    svg.append("path").datum(borders).attr("class","border").attr("d",path);
+
+    const gCities = svg.append("g").attr("class","cities-layer");
+    const offsets = {
+      "Londres":[-5,-10],"New York":[-5,-10],"Paris":[6,-8],
+      "Tokyo":[7,-6],"Sydney":[7,4],"Dubaï":[7,-6],
+      "Singapour":[7,4],"Hong Kong":[7,-6],"Pékin":[-5,-10],"Shanghai":[7,4],
+    };
+
+    cities.forEach(city => {
+      const [x, y] = projection([city.lon, city.lat]);
+      const g = gCities.append("g").attr("class","city-dot")
+        .attr("transform",`translate(${x},${y})`)
+        .on("mousemove", ev => showTip(ev, city.name, city.country, city.desc))
+        .on("mouseleave", hideTip);
+
+      g.append("circle").attr("r",5).attr("fill","#e74c3c").attr("stroke","white").attr("stroke-width",1.5);
+      const [dx, dy] = offsets[city.name] || [7,-6];
+      g.append("text")
+        .attr("x",dx).attr("y",dy)
+        .attr("font-size","9px").attr("font-weight","600")
+        .attr("fill","#1a1a1a")
+        .attr("stroke","white").attr("stroke-width","2.5")
+        .attr("paint-order","stroke")
+        .text(city.name);
+    });
+
+    window._gCountries = gCountries;
+    window._gCities    = gCities;
+  });
+
+function toggleLayer(layer) {
+  layers[layer] = !layers[layer];
+  document.getElementById("btn-" + layer).classList.toggle("active", layers[layer]);
+
+  if (layer === "orgs" && window._gCountries) {
+    window._gCountries.selectAll(".country")
+      .attr("fill", d => {
+        const a3  = numToA3[String(d.id).padStart(3,"0")];
+        const org = countryOrg[a3];
+        return (org && layers.orgs) ? orgColors[org] : "#a8bfa0";
+      })
+      .attr("opacity", d => {
+        const a3 = numToA3[String(d.id).padStart(3,"0")];
+        return (countryOrg[a3] && layers.orgs) ? 0.75 : 0.85;
+      });
+  }
+  if (layer === "metropoles" && window._gCities) {
+    window._gCities.attr("display", layers.metropoles ? null : "none");
+  }
+}
+</script>
 </body>
 </html>

@@ -4,259 +4,538 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La mondialisation et ses espaces — Planisphère interactif</title>
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZzEiIGN4PSIzNiUiIGN5PSIzMiUiIHI9IjY1JSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI0NSUiIHN0b3AtY29sb3I9IiNkZGUzZWEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOWFhM2FkIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJzaGFkb3ciIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iNzAlIiBzdG9wLWNvbG9yPSJ0cmFuc3BhcmVudCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAyMiIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSI3NSUiIHN0b3AtY29sb3I9IiNkNGE4MzYwMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkNGE4MzY0MCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZExpbmUiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E4ODIyYSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iI2U4Yzk2YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2Y1ZTA5YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iI2U4Yzk2YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhODgyMmEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRBcmMiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZTA5YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2M5YTg0YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4YTY4MjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImNsaXAiPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzYiLz48L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjgyIiBmaWxsPSJ1cmwoI2dsb3cpIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI3NiIgZmlsbD0idXJsKCNnMSkiLz4KICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcCkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdhODY5NCIgc3Ryb2tlLXdpZHRoPSIwLjYiIG9wYWNpdHk9IjAuMjUiPgogICAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9IjI4IiByeT0iNzYiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMDAiIHJ4PSI1NSIgcnk9Ijc2Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iNzAiICByeD0iNzAiIHJ5PSIxNiIvPgogICAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEzMCIgcng9IjcwIiByeT0iMTYiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSI0MyIgIHJ4PSI1MCIgcnk9IjkiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNTciIHJ4PSI1MCIgcnk9IjkiLz4KICA8L2c+CiAgPGxpbmUgeDE9IjI0IiB5MT0iMTAwIiB4Mj0iMTc2IiB5Mj0iMTAwIiBjbGlwLXBhdGg9InVybCgjY2xpcCkiIHN0cm9rZT0idXJsKCNnb2xkTGluZSkiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC45NSIvPgogIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMDAiIHJ4PSIyOCIgcnk9Ijc2IiBjbGlwLXBhdGg9InVybCgjY2xpcCkiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnb2xkQXJjKSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG9wYWNpdHk9IjAuODUiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9Ijc2IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZEFyYykiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI3NiIgZmlsbD0idXJsKCNzaGFkb3cpIi8+CiAgPGVsbGlwc2UgY3g9IjcyIiBjeT0iNzEiIHJ4PSIyMCIgcnk9IjEyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC40NSIgdHJhbnNmb3JtPSJyb3RhdGUoLTM1LDcyLDcxKSIvPgogIDxlbGxpcHNlIGN4PSI4MiIgY3k9IjYzIiByeD0iNiIgcnk9IjMuNSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuNiIgdHJhbnNmb3JtPSJyb3RhdGUoLTM1LDgyLDYzKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjI0IiByPSI1LjUiIGZpbGw9IiNjOWE4NGMiIHN0cm9rZT0iI2Y1ZTA5YSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTc2IiByPSI1LjUiIGZpbGw9IiNjOWE4NGMiIHN0cm9rZT0iI2Y1ZTA5YSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==" type="image/svg+xml">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICAKICAGPGR0IHN0eWxlPSJmaWxsOiNGRkYiPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iOTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMDAwMDIyIiBzdHJva2Utd2lkdGg9IjIiLz48L2RlZnM+CiAgPHN2ZyB4PSI0MCIgeT0iNDAiIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTYwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPgogICAgPHBhdGggZD0iTTAgNTAgQzAgNTAgMzAgMCAxNjAgNTAgQzE2MCAxMDAgMTMwIDE1MCAwIDEwMCBMMCA1MCIgZmlsbD0iIzAwMDAwMDMzIiBvcGFjaXR5PSIwLjYiLz4KICAGPC9zdmc+Cjwvc3ZnPg==" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* RESET & VARIABLES                                                            */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 :root {
-  --slate: #1e2a35;
-  --gold: #c9a84c;
-  --cream: #f5f0e8;
-  --text: #1e2a35;
-  --text-muted: #6b7a87;
+  /* Light theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #efefef;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #a1a1a6;
+  --border-color: #d5d5d7;
+  --accent-color: #0071e3;
+  --accent-hover: #0077ed;
+  
+  /* Organization colors */
+  --eu-color: #3B8BD4;
+  --aceum-color: #7F77DD;
+  --asean-color: #1D9E75;
+  --mercosur-color: #D85A30;
+  --mercosur-assoc-color: #FF8C69;
+  --ua-color: #BA7517;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #1d1d1f;
+    --bg-tertiary: #424245;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --text-tertiary: #86868b;
+    --border-color: #424245;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* BODY & LAYOUT                                                                */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 300;
-  background: var(--cream);
-  color: var(--text);
-  min-height: 100vh;
-  padding: 2rem;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #wrapper {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: var(--spacing-lg);
 }
 
-/* ── HEADER ── */
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* HEADER                                                                       */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 .atlas-header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(30,42,53,0.15);
-  gap: 12px;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  gap: var(--spacing-lg);
   flex-wrap: wrap;
+}
+
+.atlas-title-block {
+  flex: 1;
+  min-width: 250px;
 }
 
 .atlas-eyebrow {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 10px;
+  font-size: var(--font-size-xs);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 3px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
 }
+
 .atlas-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
   font-weight: 700;
-  color: var(--slate);
-  line-height: 1.15;
+  color: var(--text-primary);
+  line-height: 1.2;
 }
+
 .atlas-title em {
   font-style: italic;
   font-weight: 500;
-  color: #4a5a68;
+  color: var(--text-secondary);
 }
 
-/* ── CONTROLS ── */
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* CONTROLS                                                                     */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 .controls {
   display: flex;
-  gap: 6px;
+  gap: var(--spacing-sm);
   align-items: center;
   flex-wrap: wrap;
 }
+
 .ctrl-label {
-  font-size: 10px;
+  font-size: var(--font-size-xs);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-right: 2px;
+  color: var(--text-secondary);
+  margin-right: var(--spacing-xs);
 }
+
 .toggle-pill {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 5px 12px;
-  border: 1px solid rgba(30,42,53,0.25);
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
-  background: transparent;
-  color: #4a5a68;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 11px;
-  font-weight: 400;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
-  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
 }
+
+.toggle-pill:hover:not(.active) {
+  border-color: var(--text-secondary);
+}
+
 .toggle-pill .pill-dot {
-  width: 7px; height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.toggle-pill.active {
-  border-color: var(--slate);
-  color: var(--slate);
-  background: rgba(30,42,53,0.06);
-}
-.toggle-pill:not(.active) { opacity: 0.5; }
 
-/* ── MAP ── */
+.toggle-pill.active {
+  border-color: var(--accent-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-tertiary);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* MAP CONTAINER                                                                */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 #map-container {
   position: relative;
   width: 100%;
-  border-radius: 6px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(30,42,53,0.2);
-  box-shadow: 0 2px 16px rgba(30,42,53,0.08);
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: var(--spacing-xl) 0;
 }
-svg#map { display: block; width: 100%; height: auto; }
 
-.country { stroke: #fff; stroke-width: 0.3; transition: opacity 0.15s; }
-.country:hover { opacity: 0.78; }
-.graticule { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 0.3; }
-.sphere { fill: #2a6496; }
-.border { fill: none; stroke: #fff; stroke-width: 0.5; }
-.city-dot { cursor: pointer; }
-.city-dot circle { transition: r 0.15s; }
-.city-dot:hover circle { r: 7; }
+svg#map {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
-/* ── TOOLTIP ── */
+.country {
+  stroke: var(--bg-primary);
+  stroke-width: 0.4;
+  transition: opacity 0.15s ease;
+  cursor: pointer;
+}
+
+.country:hover {
+  opacity: 0.85;
+}
+
+.graticule {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 0.2;
+  opacity: 0.3;
+}
+
+.sphere {
+  fill: #2a6496;
+}
+
+.border {
+  fill: none;
+  stroke: var(--bg-primary);
+  stroke-width: 0.5;
+}
+
+.city-dot {
+  cursor: pointer;
+}
+
+.city-dot circle {
+  transition: r 0.15s ease;
+}
+
+.city-dot:hover circle {
+  r: 7;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* TOOLTIP                                                                      */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 .tooltip {
   position: absolute;
   pointer-events: none;
-  background: #fff;
-  border: 1px solid rgba(30,42,53,0.15);
-  border-radius: 4px;
-  padding: 9px 13px;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 12px;
-  max-width: 215px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  max-width: 240px;
   z-index: 20;
   display: none;
-  line-height: 1.55;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  line-height: 1.6;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
-.tooltip strong {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  font-size: 14px;
-  display: block;
-  margin-bottom: 1px;
-  color: var(--slate);
-}
-.tooltip .tip-country {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 4px;
-}
-.tooltip span { color: var(--text-muted); font-size: 11.5px; }
 
-/* ── FOOTER ── */
+.tooltip strong {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+}
+
+.tooltip .tip-country {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.tooltip span {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* FOOTER & LEGEND                                                              */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 .atlas-footer {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  margin-top: 12px;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
   flex-wrap: wrap;
 }
+
 .legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
   flex: 1;
 }
+
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 300;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 400;
 }
+
 .legend-swatch-dot {
-  width: 9px; height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.9);
+  border: 1.5px solid var(--bg-primary);
   flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--border-color);
 }
+
 .legend-swatch-bar {
-  width: 18px; height: 8px;
+  width: 16px;
+  height: 6px;
   border-radius: 2px;
-  opacity: 0.75;
+  opacity: 0.8;
   flex-shrink: 0;
 }
+
 .atlas-note {
-  font-size: 10px;
-  color: #9a9a9a;
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
   letter-spacing: 0.02em;
   text-align: right;
   white-space: nowrap;
-  padding-top: 2px;
+  padding-top: var(--spacing-sm);
   font-style: italic;
 }
 
-/* ── INFO BOXES ── */
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* INFO SECTION                                                                 */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 .info-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(30,42,53,0.1);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
 }
+
 .info-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid rgba(30,42,53,0.1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  background: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
+
+.info-card:hover {
+  border-color: var(--accent-color);
+}
+
 .info-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  color: var(--slate);
-  margin-bottom: 12px;
-  border-bottom: 2px solid var(--gold);
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent-color);
   display: inline-block;
+  padding-bottom: var(--spacing-xs);
 }
+
 .info-list {
   list-style: none;
 }
+
 .info-item {
-  margin-bottom: 12px;
-  font-size: 15px;
-  line-height: 1.5;
-}
-.info-item strong {
-  color: var(--slate);
-  display: block;
-  font-weight: 700;
-  font-size: 17px;
-  margin-bottom: 4px;
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
 }
 
+.info-item strong {
+  color: var(--text-primary);
+  display: block;
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xs);
+}
 
 .info-item ul {
-  margin-top: 8px;
-  margin-left: 20px; /* Retrait pour éviter que les puces ne touchent le bord */
+  margin-top: var(--spacing-sm);
+  margin-left: var(--spacing-lg);
   padding-left: 0;
 }
+
 .info-item li {
-  margin-bottom: 6px;
+  margin-bottom: var(--spacing-xs);
   list-style-type: disc;
+  color: var(--text-secondary);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* RESPONSIVE DESIGN                                                            */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  #wrapper {
+    padding: var(--spacing-md);
+  }
+
+  .atlas-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .atlas-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .theme-toggle {
+    margin-left: 0;
+  }
+
+  #map-container {
+    aspect-ratio: 4 / 3;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .atlas-footer {
+    flex-direction: column;
+  }
+
+  .legend {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .atlas-note {
+    text-align: left;
+    white-space: normal;
+  }
+
+  .info-section {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .info-card {
+    padding: var(--spacing-md);
+  }
+
+  .info-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .info-item strong {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  #wrapper {
+    padding: var(--spacing-sm);
+  }
+
+  .atlas-eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .atlas-title {
+    font-size: 1.5rem;
+  }
+
+  .controls {
+    gap: var(--spacing-xs);
+  }
+
+  .toggle-pill {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+
+  .ctrl-label {
+    display: none;
+  }
+
+  #map-container {
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+  }
+
+  .legend {
+    grid-template-columns: 1fr;
+  }
+
+  .info-item {
+    font-size: var(--font-size-sm);
+  }
+
+  .info-item strong {
+    font-size: var(--font-size-base);
+  }
 }
 
 </style>
@@ -273,12 +552,13 @@ svg#map { display: block; width: 100%; height: auto; }
       <span class="ctrl-label">Calques</span>
       <button class="toggle-pill active" id="btn-metropoles" onclick="toggleLayer('metropoles')">
         <span class="pill-dot" style="background:#e74c3c"></span>
-        Métropoles
+        <span>Métropoles</span>
       </button>
       <button class="toggle-pill active" id="btn-orgs" onclick="toggleLayer('orgs')">
-        <span class="pill-dot" style="background:#c9a84c"></span>
-        Organisations
+        <span class="pill-dot" style="background:var(--accent-color)"></span>
+        <span>Organisations</span>
       </button>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
     </div>
   </div>
 
@@ -291,96 +571,133 @@ svg#map { display: block; width: 100%; height: auto; }
     <div class="legend">
       <div class="legend-item">
         <span class="legend-swatch-dot" style="background:#e74c3c"></span>
-        Métropole mondiale (top 10)
+        <span>Métropole mondiale</span>
       </div>
       <div class="legend-item">
-        <span class="legend-swatch-bar" style="background:#3B8BD4"></span>
-        Union européenne
+        <span class="legend-swatch-bar" style="background:var(--eu-color)"></span>
+        <span>Union européenne</span>
       </div>
       <div class="legend-item">
-        <span class="legend-swatch-bar" style="background:#7F77DD"></span>
-        ACEUM
+        <span class="legend-swatch-bar" style="background:var(--aceum-color)"></span>
+        <span>ACEUM</span>
       </div>
       <div class="legend-item">
-        <span class="legend-swatch-bar" style="background:#1D9E75"></span>
-        ASEAN
+        <span class="legend-swatch-bar" style="background:var(--asean-color)"></span>
+        <span>ASEAN</span>
       </div>
       <div class="legend-item">
-        <span class="legend-swatch-bar" style="background:#D85A30"></span>
-        MERCOSUR
+        <span class="legend-swatch-bar" style="background:var(--mercosur-color)"></span>
+        <span>MERCOSUR</span>
       </div>
       <div class="legend-item">
-        <span class="legend-swatch-bar" style="background:#FF8C69"></span>
-        MERCOSUR (associés)
+        <span class="legend-swatch-bar" style="background:var(--mercosur-assoc-color)"></span>
+        <span>MERCOSUR (associés)</span>
       </div>
       <div class="legend-item">
-        <span class="legend-swatch-bar" style="background:#BA7517"></span>
-        Union africaine
+        <span class="legend-swatch-bar" style="background:var(--ua-color)"></span>
+        <span>Union africaine</span>
       </div>
     </div>
-    
-      <div class="legend-item">
-        <span class="legend-swatch-bar" style="background: repeating-linear-gradient(45deg, #ccc, #ccc 2px, #fff 2px, #fff 4px); border: 1px solid #999;"></span>
-        Pays suspendu
-      </div>
-    <div class="atlas-note">Survole les pays et les villes · Clique sur une métropole pour approfondir</div>
+    <div class="atlas-note">Survolez les pays et les villes pour plus d'informations</div>
   </div>
 
-<div class="info-section">
-  <div class="info-card">
-    <h3>Grands ensembles régionaux</h3>
-    <div class="info-list">
-      <div class="info-item"><strong>Union européenne</strong>Espace d'intégration régionale le plus abouti au monde (27 membres). Union économique et monétaire (Zone Euro) et espace de libre circulation (Schengen).</div>
-      <div class="info-item"><strong>ACEUM</strong>Accord Canada-États-Unis-Mexique (ex-ALENA). Zone de libre-échange majeure, centrée sur la puissance états-unienne.</div>
-      <div class="info-item"><strong>ASEAN</strong>Association des nations de l'Asie du Sud-Est. Pôle de croissance mondial majeur, visant la stabilité politique et l'intégration économique.</div>
-      <div class="info-item"><strong>MERCOSUR</strong>Marché commun du Sud. Organisation d'intégration économique en Amérique latine (Argentine, Brésil, Paraguay, Uruguay, Bolivie, Venezuela - actuellement suspendu). Pays associés : Chili, Colombie, Équateur, Guyana, Panama, Pérou, Suriname.</div>
-      <div class="info-item"><strong>Union africaine</strong>Organisation continentale visant à promouvoir l'unité, la paix et le développement économique à l'échelle de l'Afrique.</div>
-    </div>
-  </div>
+  <div class="info-section">
     <div class="info-card">
-    <h3>Notions clés</h3>
-    <div class="info-list">
-      <div class="info-item">
-        <strong>Mondialisation</strong>
-        Un processus d'extension progressive du système capitaliste dans l'espace géographique mondial (...)
-        <ul>
-          <li>Une intensification des échanges et des flux de tous les ordres</li>
-          <li>Interdépendance croissante entre les différents États du monde</li>
-          <li>Liens de "coopétition" (Guy Thuillier, Introduction à la géopolitique)</li>
-        </ul>
+      <h3>Organisations régionales</h3>
+      <div class="info-list">
+        <div class="info-item">
+          <strong>Union européenne</strong>
+          Espace d'intégration régionale le plus abouti au monde (27 membres). Union économique et monétaire (Zone Euro) et espace de libre circulation (Schengen).
+        </div>
+        <div class="info-item">
+          <strong>ACEUM</strong>
+          Accord Canada–États-Unis–Mexique (ex-ALENA). Zone de libre-échange majeure, centrée sur la puissance états-unienne.
+        </div>
+        <div class="info-item">
+          <strong>ASEAN</strong>
+          Association des nations de l'Asie du Sud-Est. Pôle de croissance mondial majeur, visant la stabilité politique et l'intégration économique.
+        </div>
       </div>
-      <div class="info-item">
-        <strong>Centre</strong>
-        Un centre est un pôle qui joue un rôle d’impulsion et de direction. Un centre spatial n'est pas forcément central géométriquement.
+    </div>
+    <div class="info-card">
+      <h3>MERCOSUR</h3>
+      <div class="info-list">
+        <div class="info-item">
+          <strong>Membres permanents</strong>
+          Argentine, Brésil, Paraguay, Uruguay, Bolivie. Venezuela est suspendu depuis 2016.
+        </div>
+        <div class="info-item">
+          <strong>Pays associés</strong>
+          Chili, Colombie, Équateur, Guyana, Panama, Pérou, Suriname. Ces pays participent à la zone de libre-échange sans être membres permanents.
+        </div>
+        <div class="info-item">
+          <strong>Marché commun du Sud</strong>
+          Organisation d'intégration économique en Amérique latine visant à promouvoir le libre-échange et l'intégration régionale.
+        </div>
       </div>
-      <div class="info-item">
-        <strong>Périphérie</strong>
-        Les périphéries sont les espaces sous la domination d’un centre. Les espaces périphériques peuvent être centraux géométriquement (ex : Massif Central en France).
-      </div>
-      
-      <div class="info-item">
-        <strong>Périphérie intégrée</strong>
-        Espace dépendant d’un centre, mais participant activement à la mondialisation. Il bénéficie de transferts technologiques, d’investissements (IDE) et d’une croissance économique soutenue, tout en alimentant le centre en main-d’œuvre, matières premières ou autres ressources selon les contextes et les échelles. Exemples : pays émergents, littoraux touristiques.
-      </div>
-      <div class="info-item">
-        <strong>Périphérie délaissée</strong>
-        Espace en marge des grands flux de la mondialisation, entièrement dominé par le centre. Polarisé par celui-ci, il reçoit très peu en retour, souffrant d’un manque d’infrastructures, d’instabilité politique ou de pauvreté, ce qui freine son intégration au système-monde. Exemples : PMA, zones de conflit, zones montagneuses.
-      </div>
-
-      <div class="info-item">
-        <strong>Territoire</strong>
-        Espace approprié par une société, délimité par des frontières et organisé par des acteurs politiques, économiques et sociaux.
+    </div>
+    <div class="info-card">
+      <h3>Concepts clés</h3>
+      <div class="info-list">
+        <div class="info-item">
+          <strong>Mondialisation</strong>
+          Processus d'extension progressive du système capitaliste dans l'espace géographique mondial, caractérisé par une intensification des échanges et une interdépendance croissante.
+        </div>
+        <div class="info-item">
+          <strong>Centre et Périphérie</strong>
+          Les centres sont des pôles d'impulsion et de direction, tandis que les périphéries sont des espaces sous leur domination mais participant activement à la mondialisation.
+        </div>
+        <div class="info-item">
+          <strong>Union africaine</strong>
+          Organisation continentale visant à promouvoir l'unité, la paix et le développement économique à l'échelle de l'Afrique.
+        </div>
       </div>
     </div>
   </div>
-</div>
-  </div>
-</div>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script>
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* THEME MANAGEMENT                                                             */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
+function toggleTheme() {
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = localStorage.getItem('theme') || (isDark ? 'dark' : 'light');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  localStorage.setItem('theme', newTheme);
+  applyTheme(newTheme);
+}
+
+function applyTheme(theme) {
+  const html = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  
+  if (theme === 'dark') {
+    html.style.colorScheme = 'dark';
+    toggle.textContent = '☀️';
+  } else {
+    html.style.colorScheme = 'light';
+    toggle.textContent = '🌙';
+  }
+}
+
+// Apply saved theme on load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  }
+});
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* DATA & CONFIGURATION                                                         */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 const cities = [
   { name:"Londres",   country:"Royaume-Uni",  lon:-0.12,  lat:51.5,   desc:"Hub financier mondial, City, bourse. Nœud culturel et diplomatique majeur." },
   { name:"New York",  country:"États-Unis",   lon:-74.0,  lat:40.7,   desc:"1re place financière (Wall St), siège ONU, capitale culturelle mondiale." },
@@ -402,6 +719,7 @@ const orgCountries = {
   mercosur_assoc: ['CHL', 'COL', 'ECU', 'GUY', 'PAN', 'PER', 'SUR'],
   ua: ['DZA', 'AGO', 'BEN', 'BWA', 'BFA', 'BDI', 'CPV', 'CMR', 'CAF', 'TCD', 'COM', 'COG', 'COD', 'CIV', 'DJI', 'EGY', 'GNQ', 'ERI', 'SWZ', 'ETH', 'GAB', 'GMB', 'GHA', 'GIN', 'GNB', 'KEN', 'LSO', 'LBR', 'LBY', 'MDG', 'MWI', 'MLI', 'MRT', 'MUS', 'MAR', 'MOZ', 'NAM', 'NER', 'NGA', 'RWA', 'STP', 'SEN', 'SYC', 'SLE', 'SOM', 'ZAF', 'SSD', 'SDN', 'TZA', 'TGO', 'TUN', 'UGA', 'ESH', 'ZMB', 'ZWE'],
 };
+
 const orgColors = { eu:"#3B8BD4", aceum:"#7F77DD", asean:"#1D9E75", mercosur:"#D85A30", mercosur_assoc:"#FF8C69", ua:"#BA7517" };
 const orgNames  = { eu:"Union européenne", aceum:"ACEUM", asean:"ASEAN", mercosur:"MERCOSUR", mercosur_assoc:"MERCOSUR (associé)", ua:"Union africaine" };
 
@@ -449,8 +767,11 @@ for (const [org, countries] of Object.entries(orgCountries)) {
 }
 
 const suspendedCountries = ['VEN'];
-
 const layers = { metropoles: true, orgs: true };
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* MAP INITIALIZATION                                                           */
+/* ──────────────────────────────────────────────────────────────────────────── */
 
 const svg = d3.select("#map");
 const projection = d3.geoEqualEarth();
@@ -474,7 +795,6 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(d
   svg.append("path").datum({type: "Sphere"}).attr("class", "sphere").attr("d", path);
   svg.append("path").datum(d3.geoGraticule10()).attr("class", "graticule").attr("d", path);
 
-  // Définition du motif de hachures pour les pays suspendus
   svg.append("defs").append("pattern")
     .attr("id", "hatch")
     .attr("patternUnits", "userSpaceOnUse")
@@ -510,7 +830,6 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(d
     })
     .on("mouseleave", hideTip);
 
-  
   gCountries.selectAll(".country-hatch")
     .data(countries.features).enter()
     .append("path")
@@ -520,7 +839,7 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(d
       const a3 = numToA3[String(d.id).padStart(3,"0")];
       return suspendedCountries.includes(a3) ? "url(#hatch)" : "none";
     })
-    .style("pointer-events", "none"); // Pour ne pas gêner le survol du path principal
+    .style("pointer-events", "none");
 
   svg.append("path").datum(borders).attr("class","border").attr("d",path);
 
@@ -570,10 +889,10 @@ function toggleLayer(layer) {
       });
   }
   
-    if (layer === "orgs" && window._gCountries) {
-      window._gCountries.selectAll(".country-hatch")
-        .attr("display", layers.orgs ? null : "none");
-    }
+  if (layer === "orgs" && window._gCountries) {
+    window._gCountries.selectAll(".country-hatch")
+      .attr("display", layers.orgs ? null : "none");
+  }
 
   if (layer === "metropoles" && window._gCities) {
     window._gCities.attr("display", layers.metropoles ? null : "none");

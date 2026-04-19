@@ -310,6 +310,10 @@ svg#map { display: block; width: 100%; height: auto; }
         MERCOSUR
       </div>
       <div class="legend-item">
+        <span class="legend-swatch-bar" style="background:#FF8C69"></span>
+        MERCOSUR (associés)
+      </div>
+      <div class="legend-item">
         <span class="legend-swatch-bar" style="background:#BA7517"></span>
         Union africaine
       </div>
@@ -329,7 +333,7 @@ svg#map { display: block; width: 100%; height: auto; }
       <div class="info-item"><strong>Union européenne</strong>Espace d'intégration régionale le plus abouti au monde (27 membres). Union économique et monétaire (Zone Euro) et espace de libre circulation (Schengen).</div>
       <div class="info-item"><strong>ACEUM</strong>Accord Canada-États-Unis-Mexique (ex-ALENA). Zone de libre-échange majeure, centrée sur la puissance états-unienne.</div>
       <div class="info-item"><strong>ASEAN</strong>Association des nations de l'Asie du Sud-Est. Pôle de croissance mondial majeur, visant la stabilité politique et l'intégration économique.</div>
-      <div class="info-item"><strong>MERCOSUR</strong>Marché commun du Sud. Organisation d'intégration économique en Amérique latine (Argentine, Brésil, Paraguay, Uruguay, Bolivie, Venezuela - actuellement suspendu).</div>
+      <div class="info-item"><strong>MERCOSUR</strong>Marché commun du Sud. Organisation d'intégration économique en Amérique latine (Argentine, Brésil, Paraguay, Uruguay, Bolivie, Venezuela - actuellement suspendu). Pays associés : Chili, Colombie, Équateur, Guyana, Panama, Pérou, Suriname.</div>
       <div class="info-item"><strong>Union africaine</strong>Organisation continentale visant à promouvoir l'unité, la paix et le développement économique à l'échelle de l'Afrique.</div>
     </div>
   </div>
@@ -395,10 +399,11 @@ const orgCountries = {
   aceum: ['USA', 'CAN', 'MEX'],
   asean: ['BRN', 'KHM', 'IDN', 'LAO', 'MYS', 'MMR', 'PHL', 'SGP', 'THA', 'VNM', 'TLS'],
   mercosur: ['ARG', 'BRA', 'PRY', 'URY', 'BOL', 'VEN'],
+  mercosur_assoc: ['CHL', 'COL', 'ECU', 'GUY', 'PAN', 'PER', 'SUR'],
   ua: ['DZA', 'AGO', 'BEN', 'BWA', 'BFA', 'BDI', 'CPV', 'CMR', 'CAF', 'TCD', 'COM', 'COG', 'COD', 'CIV', 'DJI', 'EGY', 'GNQ', 'ERI', 'SWZ', 'ETH', 'GAB', 'GMB', 'GHA', 'GIN', 'GNB', 'KEN', 'LSO', 'LBR', 'LBY', 'MDG', 'MWI', 'MLI', 'MRT', 'MUS', 'MAR', 'MOZ', 'NAM', 'NER', 'NGA', 'RWA', 'STP', 'SEN', 'SYC', 'SLE', 'SOM', 'ZAF', 'SSD', 'SDN', 'TZA', 'TGO', 'TUN', 'UGA', 'ESH', 'ZMB', 'ZWE'],
 };
-const orgColors = { eu:"#3B8BD4", aceum:"#7F77DD", asean:"#1D9E75", mercosur:"#D85A30", ua:"#BA7517" };
-const orgNames  = { eu:"Union européenne", aceum:"ACEUM", asean:"ASEAN", mercosur:"MERCOSUR", ua:"Union africaine" };
+const orgColors = { eu:"#3B8BD4", aceum:"#7F77DD", asean:"#1D9E75", mercosur:"#D85A30", mercosur_assoc:"#FF8C69", ua:"#BA7517" };
+const orgNames  = { eu:"Union européenne", aceum:"ACEUM", asean:"ASEAN", mercosur:"MERCOSUR", mercosur_assoc:"MERCOSUR (associé)", ua:"Union africaine" };
 
 const numToA3 = {
   "004":"AFG",  "008":"ALB",  "010":"ATA",  "012":"DZA",  "016":"ASM",  "020":"AND",  "024":"AGO",  "028":"ATG",
@@ -436,123 +441,117 @@ const numToA3 = {
   "887":"YEM",  "894":"ZMB",
 };
 
-const a3ToName = {'AFG': 'Afghanistan', 'ALB': 'Albanie', 'DZA': 'Algérie', 'ASM': 'Samoa américaines', 'AND': 'Andorre', 'AGO': 'Angola', 'ATG': 'Antigua-et-Barbuda', 'AZE': 'Azerbaïdjan', 'ARG': 'Argentine', 'AUS': 'Australie', 'AUT': 'Autriche', 'BHS': 'Bahamas', 'BHR': 'Bahreïn', 'BGD': 'Bangladesh', 'ARM': 'Arménie', 'BRB': 'Barbade', 'BEL': 'Belgique', 'BMU': 'Bermudes', 'BTN': 'Bhoutan', 'BOL': 'Bolivie', 'BIH': 'Bosnie-Herzégovine', 'BWA': 'Botswana', 'BVT': 'Île Bouvet', 'BRA': 'Brésil', 'BLZ': 'Belize', 'IOT': "Territoire britannique de l'océan Indien", 'SLB': 'Îles Salomon', 'VGB': 'Îles Vierges britanniques', 'BRN': 'Brunéi Darussalam', 'BGR': 'Bulgarie', 'MMR': 'Myanmar', 'BDI': 'Burundi', 'BLR': 'Bélarus', 'KHM': 'Cambodge', 'CMR': 'Cameroun', 'CAN': 'Canada', 'CPV': 'Cabo Verde', 'CYM': 'Îles Caïmans', 'CAF': 'République centrafricaine', 'LKA': 'Sri Lanka', 'TCD': 'Tchad', 'CHL': 'Chili', 'CHN': 'Chine', 'TWN': 'Taïwan', 'CXR': 'Île Christmas', 'CCK': 'Îles Cocos', 'COL': 'Colombie', 'COM': 'Comores', 'MYT': 'Mayotte', 'COG': 'Congo', 'COD': 'Congo (RDC)', 'COK': 'Îles Cook', 'CRI': 'Costa Rica', 'HRV': 'Croatie', 'CUB': 'Cuba', 'CYP': 'Chypre', 'CZE': 'Tchéquie', 'BEN': 'Bénin', 'DNK': 'Danemark', 'DMA': 'Dominique', 'DOM': 'République dominicaine', 'ECU': 'Équateur', 'SLV': 'El Salvador', 'GNQ': 'Guinée équatoriale', 'ETH': 'Éthiopie', 'ERI': 'Érythrée', 'EST': 'Estonie', 'FRO': 'Îles Féroé', 'FLK': 'Îles Falkland', 'SGS': 'Géorgie du Sud-et-les Îles Sandwich du Sud', 'FJI': 'Fidji', 'FIN': 'Finlande', 'ALA': "Îles d'Åland", 'FRA': 'France', 'GUF': 'Guyane française', 'PYF': 'Polynésie française', 'ATF': 'Terres australes françaises', 'DJI': 'Djibouti', 'GAB': 'Gabon', 'GEO': 'Géorgie', 'GMB': 'Gambie', 'DEU': 'Allemagne', 'GHA': 'Ghana', 'GIB': 'Gibraltar', 'GRC': 'Grèce', 'GRL': 'Groenland', 'GRD': 'Grenade', 'GLP': 'Guadeloupe', 'GUM': 'Guam', 'GTM': 'Guatemala', 'GIN': 'Guinée', 'GNB': 'Guinée-Bissau', 'HTI': 'Haïti', 'HMD': 'Îles Heard-et-MacDonald', 'VAT': 'Saint-Siège', 'HND': 'Honduras', 'HKG': 'Hong Kong', 'HUN': 'Hongrie', 'ISL': 'Islande', 'IND': 'Inde', 'IDN': 'Indonésie', 'IRN': 'Iran', 'IRQ': 'Iraq', 'IRL': 'Irlande', 'ISR': 'Israël', 'ITA': 'Italie', 'CIV': "Côte d'Ivoire", 'JAM': 'Jamaïque', 'JPN': 'Japon', 'KAZ': 'Kazakhstan', 'JOR': 'Jordanie', 'KEN': 'Kenya', 'PRK': 'Corée du Nord', 'KOR': 'Corée du Sud', 'KWT': 'Koweït', 'KGZ': 'Kirghizistan', 'LAO': 'Laos', 'LBN': 'Liban', 'LSO': 'Lesotho', 'LVA': 'Lettonie', 'LBR': 'Libéria', 'LBY': 'Libye', 'LIE': 'Liechtenstein', 'LTU': 'Lituanie', 'LUX': 'Luxembourg', 'MAC': 'Macao', 'MDG': 'Madagascar', 'MWI': 'Malawi', 'MYS': 'Malaisie', 'MDV': 'Maldives', 'MLI': 'Mali', 'MLT': 'Malte', 'MTQ': 'Martinique', 'MRT': 'Mauritanie', 'MUS': 'Maurice', 'MEX': 'Mexique', 'MCO': 'Monaco', 'MNG': 'Mongolie', 'MDA': 'Moldova', 'MNE': 'Monténégro', 'MSR': 'Montserrat', 'MAR': 'Maroc', 'MOZ': 'Mozambique', 'OMN': 'Oman', 'NAM': 'Namibie', 'NRU': 'Nauru', 'NPL': 'Népal', 'NLD': 'Pays-Bas', 'CUW': 'Curaçao', 'ABW': 'Aruba', 'SXM': 'Saint-Martin (partie néerlandaise)', 'BES': 'Bonaire, Saint-Eustache et Saba', 'NCL': 'Nouvelle-Calédonie', 'VUT': 'Vanuatu', 'NZL': 'Nouvelle-Zélande', 'NIC': 'Nicaragua', 'NER': 'Niger', 'NGA': 'Nigéria', 'NIU': 'Niue', 'NFK': 'Île Norfolk', 'NOR': 'Norvège', 'MNP': 'Îles Mariannes du Nord', 'UMI': 'Îles mineures éloignées des États-Unis', 'FSM': 'Micronésie', 'MHL': 'Îles Marshall', 'PLW': 'Palaos', 'PAK': 'Pakistan', 'PAN': 'Panama', 'PNG': 'Papouasie-Nouvelle-Guinée', 'PRY': 'Paraguay', 'PER': 'Pérou', 'PHL': 'Philippines', 'PCN': 'Pitcairn', 'POL': 'Pologne', 'PRI': 'Porto Rico', 'PRT': 'Portugal', 'TLS': 'Timor-Leste', 'QAT': 'Qatar', 'REU': 'Réunion', 'ROU': 'Roumanie', 'RUS': 'Russie', 'RWA': 'Rwanda', 'BLM': 'Saint-Barthélemy', 'SHN': 'Sainte-Hélène', 'KNA': 'Saint-Kitts-et-Nevis', 'AIA': 'Anguilla', 'LCA': 'Sainte-Lucie', 'MAF': 'Saint-Martin (partie française)', 'SPM': 'Saint-Pierre-et-Miquelon', 'VCT': 'Saint-Vincent-et-les Grenadines', 'SMR': 'Saint-Marin', 'STP': 'Sao Tomé-et-Principe', 'SAU': 'Arabie saoudite', 'SEN': 'Sénégal', 'SRB': 'Serbie', 'SYC': 'Seychelles', 'SLE': 'Sierra Leone', 'SGP': 'Singapour', 'SVK': 'Slovaquie', 'VNM': 'Viet Nam', 'SVN': 'Slovénie', 'SOM': 'Somalie', 'ZAF': 'Afrique du Sud', 'ZWE': 'Zimbabwe', 'ESP': 'Espagne', 'SSD': 'Soudan du Sud', 'SDN': 'Soudan', 'ESH': 'Sahara occidental', 'SUR': 'Suriname', 'SJM': 'Svalbard et Jan Mayen', 'SWZ': 'Eswatini', 'SWE': 'Suède', 'CHE': 'Suisse', 'SYR': 'Syrie', 'TJK': 'Tadjikistan', 'THA': 'Thaïlande', 'TGO': 'Togo', 'TKL': 'Tokelau', 'TON': 'Tonga', 'TTO': 'Trinité-et-Tobago', 'ARE': 'Émirats arabes unis', 'TUN': 'Tunisie', 'TUR': 'Turquie', 'TKM': 'Turkménistan', 'TCA': 'Îles Turques-et-Caïques', 'TUV': 'Tuvalu', 'UGA': 'Ouganda', 'UKR': 'Ukraine', 'MKD': 'Macédoine du Nord', 'EGY': 'Égypte', 'GBR': 'Royaume-Uni', 'TZA': 'Tanzanie', 'USA': 'États-Unis', 'VIR': 'Îles Vierges des États-Unis', 'BFA': 'Burkina Faso', 'URY': 'Uruguay', 'UZB': 'Ouzbékistan', 'VEN': 'Venezuela', 'WLF': 'Wallis-et-Futuna', 'WSM': 'Samoa', 'YEM': 'Yémen', 'ZMB': 'Zambie', 'ATA': 'Antarctique'};
-
-const suspendedCountries = ["NER", "MLI", "MDG", "BFA", "SDN", "VEN"];
+const a3ToName = {'AFG': 'Afghanistan', 'ALB': 'Albanie', 'DZA': 'Algérie', 'ASM': 'Samoa américaines', 'AND': 'Andorre', 'AGO': 'Angola', 'ATG': 'Antigua-et-Barbuda', 'AZE': 'Azerbaïdjan', 'ARG': 'Argentine', 'AUS': 'Australie', 'AUT': 'Autriche', 'BHS': 'Bahamas', 'BHR': 'Bahreïn', 'BGD': 'Bangladesh', 'ARM': 'Arménie', 'BRB': 'Barbade', 'BEL': 'Belgique', 'BMU': 'Bermudes', 'BTN': 'Bhoutan', 'BOL': 'Bolivie', 'BIH': 'Bosnie-Herzégovine', 'BWA': 'Botswana', 'BVT': 'Île Bouvet', 'BRA': 'Brésil', 'BLZ': 'Belize', 'IOT': "Territoire britannique de l'océan Indien", 'SLB': 'Îles Salomon', 'VGB': 'Îles Vierges britanniques', 'BRN': 'Brunéi Darussalam', 'BGR': 'Bulgarie', 'MMR': 'Myanmar', 'BDI': 'Burundi', 'BLR': 'Bélarus', 'KHM': 'Cambodge', 'CMR': 'Cameroun', 'CAN': 'Canada', 'CPV': 'Cabo Verde', 'CYM': 'Îles Caïmans', 'CAF': 'République centrafricaine', 'LKA': 'Sri Lanka', 'TCD': 'Tchad', 'CHL': 'Chili', 'CHN': 'Chine', 'TWN': 'Taïwan', 'CXR': 'Île Christmas', 'CCK': 'Îles Cocos', 'COL': 'Colombie', 'COM': 'Comores', 'MYT': 'Mayotte', 'COG': 'Congo', 'COD': 'Congo (RDC)', 'COK': 'Îles Cook', 'CRI': 'Costa Rica', 'HRV': 'Croatie', 'CUB': 'Cuba', 'CYP': 'Chypre', 'CZE': 'Tchéquie', 'BEN': 'Bénin', 'DNK': 'Danemark', 'DMA': 'Dominique', 'DOM': 'République dominicaine', 'ECU': 'Équateur', 'SLV': 'El Salvador', 'GNQ': 'Guinée équatoriale', 'ETH': 'Éthiopie', 'ERI': 'Érythrée', 'EST': 'Estonie', 'FRO': 'Îles Féroé', 'FLK': 'Îles Falkland', 'SGS': 'Géorgie du Sud-et-les Îles Sandwich du Sud', 'FJI': 'Fidji', 'FIN': 'Finlande', 'ALA': "Îles d'Åland", 'FRA': 'France', 'GUF': 'Guyane française', 'PYF': 'Polynésie française', 'ATF': 'Terres australes françaises', 'DJI': 'Djibouti', 'GAB': 'Gabon', 'GEO': 'Géorgie', 'GMB': 'Gambie', 'DEU': 'Allemagne', 'GHA': 'Ghana', 'GIB': 'Gibraltar', 'GRC': 'Grèce', 'GRL': 'Groenland', 'GRD': 'Grenade', 'GLP': 'Guadeloupe', 'GUM': 'Guam', 'GTM': 'Guatemala', 'GIN': 'Guinée', 'GNB': 'Guinée-Bissau', 'HTI': 'Haïti', 'HMD': 'Îles Heard-et-MacDonald', 'VAT': 'Saint-Siège', 'HND': 'Honduras', 'HKG': 'Hong Kong', 'HUN': 'Hongrie', 'ISL': 'Islande', 'IND': 'Inde', 'IDN': 'Indonésie', 'IRN': 'Iran', 'IRQ': 'Iraq', 'IRL': 'Irlande', 'ISR': 'Israël', 'ITA': 'Italie', 'CIV': "Côte d'Ivoire", 'JAM': 'Jamaïque', 'JPN': 'Japon', 'KAZ': 'Kazakhstan', 'JOR': 'Jordanie', 'KEN': 'Kenya', 'PRK': 'Corée du Nord', 'KOR': 'Corée du Sud', 'KWT': 'Koweït', 'KGZ': 'Kirghizistan', 'LAO': 'Laos', 'LBN': 'Liban', 'LSO': 'Lesotho', 'LVA': 'Lettonie', 'LBR': 'Libéria', 'LBY': 'Libye', 'LIE': 'Liechtenstein', 'LTU': 'Lituanie', 'LUX': 'Luxembourg', 'MAC': 'Macao', 'MDG': 'Madagascar', 'MWI': 'Malawi', 'MYS': 'Malaisie', 'MDV': 'Maldives', 'MLI': 'Mali', 'MLT': 'Malte', 'MTQ': 'Martinique', 'MRT': 'Mauritanie', 'MUS': 'Maurice', 'MEX': 'Mexique', 'MCO': 'Monaco', 'MNG': 'Mongolie', 'MDA': 'Moldova', 'MNE': 'Monténégro', 'MSR': 'Montserrat', 'MAR': 'Maroc', 'MOZ': 'Mozambique', 'OMN': 'Oman', 'NAM': 'Namibie', 'NRU': 'Nauru', 'NPL': 'Népal', 'NLD': 'Pays-Bas', 'CUW': 'Curaçao', 'ABW': 'Aruba', 'SXM': 'Saint-Martin (partie néerlandaise)', 'BES': 'Bonaire, Saint-Eustache et Saba', 'NCL': 'Nouvelle-Calédonie', 'VUT': 'Vanuatu', 'NZL': 'Nouvelle-Zélande', 'NIC': 'Nicaragua', 'NER': 'Niger', 'NGA': 'Nigéria', 'NIU': 'Niue', 'NFK': 'Île Norfolk', 'NOR': 'Norvège', 'MNP': 'Îles Mariannes du Nord', 'UMI': 'Îles mineures éloignées des États-Unis', 'FSM': 'Micronésie', 'MHL': 'Îles Marshall', 'PLW': 'Palaos', 'PAK': 'Pakistan', 'PAN': 'Panama', 'PNG': 'Papouasie-Nouvelle-Guinée', 'PRY': 'Paraguay', 'PER': 'Pérou', 'PHL': 'Philippines', 'PCN': 'Pitcairn', 'POL': 'Pologne', 'PRT': 'Portugal', 'GNB': 'Guinée-Bissau', 'TLS': 'Timor-Leste', 'PRI': 'Porto Rico', 'QAT': 'Qatar', 'REU': 'Réunion', 'ROU': 'Roumanie', 'RUS': 'Fédération de Russie', 'RWA': 'Rwanda', 'BLM': 'Saint-Barthélemy', 'SHN': 'Sainte-Hélène', 'KNA': 'Saint-Kitts-et-Nevis', 'AIA': 'Anguilla', 'LCA': 'Sainte-Lucie', 'MAF': 'Saint-Martin (partie française)', 'SPM': 'Saint-Pierre-et-Miquelon', 'VCT': 'Saint-Vincent-et-les Grenadines', 'SMR': 'Saint-Marin', 'STP': 'Sao Tomé-et-Principe', 'SAU': 'Arabie saoudite', 'SEN': 'Sénégal', 'SRB': 'Serbie', 'SYC': 'Seychelles', 'SLE': 'Sierra Leone', 'SGP': 'Singapour', 'SVK': 'Slovaquie', 'VNM': 'Viet Nam', 'SVN': 'Slovénie', 'SOM': 'Somalie', 'ZAF': 'Afrique du Sud', 'ZWE': 'Zimbabwe', 'ESP': 'Espagne', 'SSD': 'Soudan du Sud', 'SDN': 'Soudan', 'ESH': 'Sahara occidental', 'SUR': 'Suriname', 'SJM': 'Svalbard et Île Jan Mayen', 'SWZ': 'Eswatini', 'SWE': 'Suède', 'CHE': 'Suisse', 'SYR': 'République arabe syrienne', 'TJK': 'Tadjikistan', 'THA': 'Thaïlande', 'TGO': 'Togo', 'TKL': 'Tokelau', 'TON': 'Tonga', 'TTO': 'Trinité-et-Tobago', 'ARE': 'Émirats arabes unis', 'TUN': 'Tunisie', 'TUR': 'Turquie', 'TKM': 'Turkménistan', 'TCA': 'Îles Turques et Caïques', 'TUV': 'Tuvalu', 'UGA': 'Ouganda', 'UKR': 'Ukraine', 'MKD': 'Macédoine du Nord', 'EGY': 'Égypte', 'GBR': 'Royaume-Uni', 'TZA': 'République-Unie de Tanzanie', 'USA': 'États-Unis', 'VIR': 'Îles Vierges des États-Unis', 'BFA': 'Burkina Faso', 'URY': 'Uruguay', 'UZB': 'Ouzbékistan', 'VEN': 'Venezuela', 'WLF': 'Wallis et Futuna', 'WSM': 'Samoa', 'YEM': 'Yémen', 'ZMB': 'Zambie'};
 
 const countryOrg = {};
-for (const [org, codes] of Object.entries(orgCountries))
-  for (const code of codes) countryOrg[code] = org;
+for (const [org, countries] of Object.entries(orgCountries)) {
+  countries.forEach(c => countryOrg[c] = org);
+}
+
+const suspendedCountries = ['VEN'];
 
 const layers = { metropoles: true, orgs: true };
+
 const svg = d3.select("#map");
-const projection = d3.geoNaturalEarth1().scale(153).translate([480, 250]);
-const path = d3.geoPath().projection(projection);
-const tooltip = document.getElementById("tooltip");
-const mapEl   = document.getElementById("map-container");
+const projection = d3.geoEqualEarth();
+const path = d3.geoPath(projection);
 
+const tooltip = d3.select("#tooltip");
+const showTip = (event, title, country, sub) => {
+  tooltip.style("display", "block")
+    .html(`<span class="tip-country">${country}</span><strong>${title}</strong><span>${sub}</span>`);
+  moveTip(event);
+};
+const moveTip = (event) => {
+  tooltip.style("left", (event.pageX + 15) + "px").style("top", (event.pageY - 25) + "px");
+};
+const hideTip = () => tooltip.style("display", "none");
 
-    // Ajout du motif de hachures
-    const defs = svg.append("defs");
-    defs.append("pattern")
-      .attr("id", "hatch")
-      .attr("patternUnits", "userSpaceOnUse")
-      .attr("width", 4)
-      .attr("height", 4)
-      .attr("patternTransform", "rotate(45)")
-      .append("line")
-      .attr("x1", 0)
-      .attr("y1", 0)
-      .attr("x2", 0)
-      .attr("y2", 4)
-      .attr("stroke", "rgba(255,255,255,0.5)")
-      .attr("stroke-width", 1.5);
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(data => {
+  const countries = topojson.feature(data, data.objects.countries);
+  const borders   = topojson.mesh(data, data.objects.countries, (a, b) => a !== b);
 
-    svg.append("path").datum({type:"Sphere"}).attr("class","sphere").attr("d",path);
-svg.append("path").datum(d3.geoGraticule()()).attr("class","graticule").attr("d",path);
+  svg.append("path").datum({type: "Sphere"}).attr("class", "sphere").attr("d", path);
+  svg.append("path").datum(d3.geoGraticule10()).attr("class", "graticule").attr("d", path);
 
-function showTip(event, name, country, desc) {
-  tooltip.innerHTML = `<strong>${name}</strong><span class="tip-country">${country}</span><span>${desc}</span>`;
-  tooltip.style.display = "block";
-  const rect = mapEl.getBoundingClientRect();
-  let x = event.clientX - rect.left + 14;
-  let y = event.clientY - rect.top + 12;
-  if (x + 225 > mapEl.offsetWidth) x = mapEl.offsetWidth - 230;
-  if (y + 110 > mapEl.offsetHeight) y -= 100;
-  tooltip.style.left = x + "px";
-  tooltip.style.top  = y + "px";
-}
-function hideTip() { tooltip.style.display = "none"; }
+  // Définition du motif de hachures pour les pays suspendus
+  svg.append("defs").append("pattern")
+    .attr("id", "hatch")
+    .attr("patternUnits", "userSpaceOnUse")
+    .attr("width", 4)
+    .attr("height", 4)
+    .attr("patternTransform", "rotate(45)")
+    .append("line")
+    .attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 4)
+    .attr("stroke", "#ccc")
+    .attr("stroke-width", 2);
 
-fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
-  .then(r => r.json())
-  .then(world => {
-    const countries = topojson.feature(world, world.objects.countries);
-    const borders   = topojson.mesh(world, world.objects.countries, (a,b) => a !== b);
-    const gCountries = svg.append("g").attr("class","countries-layer");
+  const gCountries = svg.append("g").attr("class", "countries-layer");
+  
+  gCountries.selectAll(".country")
+    .data(countries.features).enter()
+    .append("path")
+    .attr("class", "country")
+    .attr("d", path)
+    .attr("fill", d => {
+      const a3  = numToA3[String(d.id).padStart(3,"0")];
+      const org = countryOrg[a3];
+      return (org && layers.orgs) ? orgColors[org] : "#a8bfa0";
+    })
+    .attr("opacity", d => {
+      const a3 = numToA3[String(d.id).padStart(3,"0")];
+      return (countryOrg[a3] && layers.orgs) ? 0.75 : 0.85;
+    })
+    .on("mousemove", function(event, d) {
+      const a3  = numToA3[String(d.id).padStart(3,"0")];
+      const org = countryOrg[a3];
+      const sub = org ? `Membre · ${orgNames[org]}` : "Non membre d'une organisation listée";
+      showTip(event, a3ToName[a3] || a3 || "Pays", "", sub);
+    })
+    .on("mouseleave", hideTip);
 
-    gCountries.selectAll(".country")
-      .data(countries.features).enter()
-      .append("path").attr("class","country").attr("d",path)
-      .attr("fill", d => {
-        const a3  = numToA3[String(d.id).padStart(3,"0")];
-        const org = countryOrg[a3];
-        return (org && layers.orgs) ? orgColors[org] : "#a8bfa0";
-      })
-      .attr("opacity", d => {
-        const a3 = numToA3[String(d.id).padStart(3,"0")];
-        return (countryOrg[a3] && layers.orgs) ? 0.75 : 0.85;
-      })
-      .on("mousemove", function(event, d) {
-        const a3  = numToA3[String(d.id).padStart(3,"0")];
-        const org = countryOrg[a3];
-        const sub = org ? `Membre · ${orgNames[org]}` : "Non membre d'une organisation listée";
-        showTip(event, a3ToName[a3] || a3 || "Pays", "", sub);
-      })
+  
+  gCountries.selectAll(".country-hatch")
+    .data(countries.features).enter()
+    .append("path")
+    .attr("class", "country-hatch")
+    .attr("d", path)
+    .attr("fill", d => {
+      const a3 = numToA3[String(d.id).padStart(3,"0")];
+      return suspendedCountries.includes(a3) ? "url(#hatch)" : "none";
+    })
+    .style("pointer-events", "none"); // Pour ne pas gêner le survol du path principal
+
+  svg.append("path").datum(borders).attr("class","border").attr("d",path);
+
+  const gCities = svg.append("g").attr("class","cities-layer");
+  const offsets = {
+    "Londres":[-5,-10],"New York":[-5,-10],"Paris":[6,-8],
+    "Tokyo":[7,-6],"Sydney":[7,4],"Dubaï":[7,-6],
+    "Singapour":[7,4],"Hong Kong":[7,-6],"Pékin":[-5,-10],"Shanghai":[7,4],
+  };
+
+  cities.forEach(city => {
+    const [x, y] = projection([city.lon, city.lat]);
+    const g = gCities.append("g").attr("class","city-dot")
+      .attr("transform",`translate(${x},${y})`)
+      .on("mousemove", ev => showTip(ev, city.name, city.country, city.desc))
       .on("mouseleave", hideTip);
 
-    
-    gCountries.selectAll(".country-hatch")
-      .data(countries.features).enter()
-      .append("path")
-      .attr("class", "country-hatch")
-      .attr("d", path)
-      .attr("fill", d => {
-        const a3 = numToA3[String(d.id).padStart(3,"0")];
-        return suspendedCountries.includes(a3) ? "url(#hatch)" : "none";
-      })
-      .style("pointer-events", "none"); // Pour ne pas gêner le survol du path principal
-
-    svg.append("path").datum(borders).attr("class","border").attr("d",path);
-
-    const gCities = svg.append("g").attr("class","cities-layer");
-    const offsets = {
-      "Londres":[-5,-10],"New York":[-5,-10],"Paris":[6,-8],
-      "Tokyo":[7,-6],"Sydney":[7,4],"Dubaï":[7,-6],
-      "Singapour":[7,4],"Hong Kong":[7,-6],"Pékin":[-5,-10],"Shanghai":[7,4],
-    };
-
-    cities.forEach(city => {
-      const [x, y] = projection([city.lon, city.lat]);
-      const g = gCities.append("g").attr("class","city-dot")
-        .attr("transform",`translate(${x},${y})`)
-        .on("mousemove", ev => showTip(ev, city.name, city.country, city.desc))
-        .on("mouseleave", hideTip);
-
-      g.append("circle").attr("r",5).attr("fill","#e74c3c").attr("stroke","white").attr("stroke-width",1.5);
-      const [dx, dy] = offsets[city.name] || [7,-6];
-      g.append("text")
-        .attr("x",dx).attr("y",dy)
-        .attr("font-size","9px").attr("font-weight","600")
-        .attr("fill","#1a1a1a")
-        .attr("stroke","white").attr("stroke-width","2.5")
-        .attr("paint-order","stroke")
-        .text(city.name);
-    });
-
-    window._gCountries = gCountries;
-    window._gCities    = gCities;
+    g.append("circle").attr("r",5).attr("fill","#e74c3c").attr("stroke","white").attr("stroke-width",1.5);
+    const [dx, dy] = offsets[city.name] || [7,-6];
+    g.append("text")
+      .attr("x",dx).attr("y",dy)
+      .attr("font-size","9px").attr("font-weight","600")
+      .attr("fill","#1a1a1a")
+      .attr("stroke","white").attr("stroke-width","2.5")
+      .attr("paint-order","stroke")
+      .text(city.name);
   });
+
+  window._gCountries = gCountries;
+  window._gCities    = gCities;
+});
 
 function toggleLayer(layer) {
   layers[layer] = !layers[layer];

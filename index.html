@@ -463,7 +463,11 @@ const showTip = (event, title, country, sub) => {
   moveTip(event);
 };
 const moveTip = (event) => {
-  tooltip.style("left", (event.pageX + 15) + "px").style("top", (event.pageY - 25) + "px");
+  const container = document.getElementById("map-container");
+  const rect = container.getBoundingClientRect();
+  const x = event.clientX - rect.left + 12;
+  const y = event.clientY - rect.top - 10;
+  tooltip.style("left", x + "px").style("top", y + "px");
 };
 const hideTip = () => tooltip.style("display", "none");
 

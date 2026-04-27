@@ -4,10 +4,11 @@ Ce dépôt contient un planisphère interactif conçu pour l'étude de la mondia
 
 ## Fonctionnalités
 
-*   **Visualisation des organisations régionales** : La carte permet de visualiser les pays membres de plusieurs grandes organisations régionales, notamment l'Union Européenne (UE), l'Accord Canada–États-Unis–Mexique (ACEUM), l'Association des nations de l'Asie du Sud-Est (ASEAN), le Marché commun du Sud (MERCOSUR) et l'Union africaine.
-*   **Pays associés du MERCOSUR** : Une nouvelle fonctionnalité a été ajoutée pour distinguer les pays associés non membres permanents du MERCOSUR (Chili, Colombie, Équateur, Guyana, Panama, Pérou, Suriname) avec une couleur spécifique (corail, proche de l'orange du MERCOSUR).
-*   **Métropoles mondiales** : Les principales métropoles mondiales sont également représentées, avec des informations détaillées au survol.
-*   **Interactivité** : Survolez les pays pour obtenir des informations sur leur appartenance aux organisations, et les villes pour des détails sur leur rôle mondial.
+*   **Visualisation des organisations régionales** : La carte permet de visualiser les pays membres de plusieurs grandes organisations régionales (UE, ACEUM, ASEAN, MERCOSUR, Union africaine).
+*   **Pays associés du MERCOSUR** : Distinction des pays associés non membres permanents avec une couleur spécifique.
+*   **Métropoles mondiales** : Représentation des principales métropoles mondiales avec informations détaillées au survol.
+*   **Pays suspendus et Zones contestées** : Nouveaux blocs d'information détaillant les pays suspendus de leurs organisations régionales (Mali, Niger, Burkina Faso, Soudan, Madagascar, Venezuela) et les zones de souveraineté contestée (Somaliland, Sahara occidental).
+*   **Interactivité et Design** : Refonte complète de l'interface avec un design moderne (style Apple), gestion des calques et infobulles dynamiques.
 
 ## Accéder au planisphère
 
@@ -15,10 +16,18 @@ Le planisphère interactif est accessible directement via GitHub Pages à l'adre
 
 [https://antonio-faure.github.io/la-mondialisation-et-ses-espaces](https://antonio-faure.github.io/la-mondialisation-et-ses-espaces)
 
+## Dernières mises à jour (Historique des commits)
+
+*   **Ajout des pays suspendus et zones contestées** : Intégration de nouvelles sections d'information dans l'interface.
+*   **Refonte du design** : Amélioration de la structure HTML et du style CSS pour une meilleure expérience utilisateur.
+*   **Correction de l'interactivité** : Ajustement de la logique de positionnement des infobulles.
+*   **Mise à jour des données** : Actualisation de la liste des pays suspendus.
+*   **Refonte de la Direction Artistique** : Nouveau style visuel, thèmes et adaptabilité mobile.
+
 ## Technologies utilisées
 
 *   HTML, CSS, JavaScript
-*   D3.js pour la manipulation des données géospatiales et la création de la carte interactive.
+*   D3.js pour la manipulation des données géospatiales.
 *   TopoJSON pour les données géographiques.
 
 ## Contribution

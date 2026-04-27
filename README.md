@@ -29,7 +29,3 @@ Le planisphère interactif est accessible directement via GitHub Pages à l'adre
 *   HTML, CSS, JavaScript
 *   D3.js pour la manipulation des données géospatiales.
 *   TopoJSON pour les données géographiques.
-
-## Contribution
-
-Les contributions sont les bienvenues pour améliorer cet outil pédagogique.
